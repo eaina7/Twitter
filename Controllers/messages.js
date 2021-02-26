@@ -1,10 +1,7 @@
 const pool = require("../DBConfig/dbconfig");
 
 module.exports = {
-
-getAll:
-
-async (_, res) => {
+  getAll: async (_, res) => {
     try {
       const dbResponse = await pool.query("SELECT * FROM messages");
       res.json({
@@ -16,15 +13,15 @@ async (_, res) => {
       console.error(Error(e));
       res.status(500);
     }
+  },
 
- },
-
- getByID: async (req, res) => {
+  getByID: async (req, res) => {
     const { id } = req.params;
     try {
-      const dbResponse = await pool.query("SELECT * FROM messages WHERE id=$1", [
-        id,
-      ]);
+      const dbResponse = await pool.query(
+        "SELECT * FROM messages WHERE id=$1",
+        [id]
+      );
       res.json({
         code: 200,
         message: "success. Found user with id " + id,
@@ -34,6 +31,5 @@ async (_, res) => {
       console.error(Error(e));
       res.status(500);
     }
-  }
-
-}
+  },
+};
