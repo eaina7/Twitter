@@ -2,6 +2,8 @@ const pool = require("../DBConfig/dbconfig");
 const express = require ("express");
 const router = express.Router();
 
+console.log(DBUSER);
+
 router.get("/messages", 
 
     async (_, res) => {
