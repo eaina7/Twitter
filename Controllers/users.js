@@ -37,13 +37,12 @@ module.exports = {
   },
   getMessagesByUser: async (req, res) => {
     const { id } = req.params;
-
+    // id, text, date, url, name
     try {
       const data = await pool.query(
-        "SELECT * FROM messages JOIN users ON users.id = messages.user_id WHERE users.id = $1",
+        "SELECT messages.id, text, users.name, date, messages.url  FROM messages JOIN users ON users.id = messages.user_id WHERE users.id = $1",
         [id]
       );
-      // console.log(data);
       res.json({
         code: 200,
         operation: "success",
