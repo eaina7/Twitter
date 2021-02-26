@@ -1,7 +1,8 @@
-const express = require ("express");
+const express = require("express");
 const router = express.Router();
+const usersControllers = require("../Controllers/users");
 
-router.get("/users", (req,res) =>res.send("Eric is the sex machine"));
+router.get("/users", usersControllers.getAll);
+router.post("/user", usersControllers.addUser);
 
-
-module.exports= router;
+module.exports = router;
