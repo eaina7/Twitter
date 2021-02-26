@@ -2,8 +2,11 @@ const pool = require("../DBConfig/dbconfig");
 
 module.exports = {
   getAll: async (_, res) => {
+    //id, text, date, user_id, messages.url, users.name
     try {
-      const dbResponse = await pool.query("SELECT * FROM messages");
+      const dbResponse = await pool.query(
+        "SELECT messages.id, text, date, user_id, messages.url, users.name FROM messages JOIN users ON users.id = messages.user_id"
+      );
       res.json({
         code: 200,
         message: "success",
@@ -19,7 +22,7 @@ module.exports = {
     const { id } = req.params;
     try {
       const dbResponse = await pool.query(
-        "SELECT * FROM messages WHERE id=$1",
+        "SELECT messages.id, text, date, user_id, messages.url, users.name FROM messages JOIN users ON users.id = messages.user_id WHERE messages.id=$1",
         [id]
       );
       res.json({
