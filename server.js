@@ -14,7 +14,7 @@ const messagesRoute = require("./Routes/messages");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use("salty-journey-93150.herokuapp.com", usersRoute);
-app.use("salty-journey-93150.herokuapp.com", messagesRoute);
+app.use("/", usersRoute);
+app.use("/", messagesRoute);
 
 app.listen(3000, () => console.log("server is listening on port 3000"));
