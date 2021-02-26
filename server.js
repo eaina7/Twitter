@@ -1,6 +1,7 @@
 // Module import
-/* const dotenv = require("dotenv");
-dotenv.config(); */
+ const dotenv = require("dotenv");
+dotenv.config(); 
+console.log(process.env);
 const express = require("express");
 const app = express();
 
